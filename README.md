@@ -10,7 +10,7 @@ poetry install
 
 ## Seting up DCA evaluation requiriements
 
-Start by cloning the repository containing [Delaunay approximation algorithm](https://github.com/vlpolyansky/voronoi-boundary-classifier/tree/testing) and run:
+We refer to the instructions given by [the authors of DCA on their github repository](https://github.com/anonymous-researcherID1893ar/DelaunayComponentAnalysis). In particular, clone the repository containing [Delaunay approximation algorithm](https://github.com/vlpolyansky/voronoi-boundary-classifier/tree/testing) and run:
 ```bash
 cd voronoi-boundary-classifier
 git checkout testing
@@ -18,12 +18,12 @@ mkdir build && cd build
 cmake ..
 make VoronoiClassifier_cl
 ```
-and copy `cpp/VoronoiClassifier_cl` to `gmc_code/DelaunayComponentAnalysis/` folder. 
-To check if executable file was built successfully run `gmc_code/DelaunayComponentAnalysis/VoronoiClassifier_cl` and make sure you see the following output
+Then copy `cpp/VoronoiClassifier_cl` to the `gmc_code/DelaunayComponentAnalysis/` folder and check that the executable file was built successfully by running `gmc_code/DelaunayComponentAnalysis/VoronoiClassifier_cl` in the terminal. Make sure you see the following output
 ```bash
 VoronoiClassifier_cl: <path>/voronoi-boundary-classifier/cpp/main_vc.cpp:51: void run_classification(int, char**): Assertion `argc >= 3' failed.
 Aborted (core dumped)
 ```
+For troubleshooting, we refer to the [original implementation.](https://github.com/anonymous-researcherID1893ar/DelaunayComponentAnalysis)
 
 
 ## Reproducing experiments
