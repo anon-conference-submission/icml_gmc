@@ -63,11 +63,12 @@ The results will appear in the `evaluation/gmc_mhd/log_0/results_dca_evaluation/
 ```bash
 model="gmc"
 echo "** Train representation model"
-python main_unsupervised.py -f with experiment.model=$model_name experiment.stage="train_model" 
+python main_unsupervised.py -f with experiment.model=$model experiment.stage="train_model" 
 
 echo "** Train classifier"
-python main_unsupervised.py -f with experiment.model=$model_name experiment.stage="train_downstream_classfier"
+python main_unsupervised.py -f with experiment.model=$model experiment.stage="train_downstream_classfier"
 ```
+After training the representation model or the classifier, please move the files `$model_mhd_model.pth.tar` and `down_$model_mhd_model.pth.tar` (available in the `evaluation`folder) to the `trained_models` folder.
 
 ### Supervised learning problem
 
@@ -101,15 +102,15 @@ python main_supervised.py -f with experiment.model="gmc" experiment.scenario="mo
 
 The results will appear in the `evaluation/gmc_mosei/log_0/results_dca_evaluation/` folder. For example, geometric alignement of complete and text representations are given in the `joint_m1/DCA_results_version0.log` file. Similarly, you can evaluate Multimodal Transformer by setting `experiment.model="multimodal_transformer"` or use CMU-MOSI dataset by setting `experiment.scenario="mosi"`
 
-If you wish to train your own models and downstream classifiers, run
+If you wish to train your own models, run
 
 ```bash
 model="gmc"
-scenario="mosi"
+scenario="mosei"
 echo "** Train representation model"
 python main_supervised.py -f with experiment.model=$model experiment.scenario=$scenario experiment.stage="train_model" 
 ```
-
+After training the model, please move the file `$model_$scenario_model.pth.tar`(available in the `evaluation`folder) to the `trained_models` folder.
 
 
 ### Reinforcement Learning: Pendulum
@@ -154,5 +155,7 @@ python main_rl.py -f with experiment.model=$model_name experiment.stage="train_m
 echo "** Train controller"
 python main_rl.py -f with experiment.model=$model_name experiment.stage="train_downstream_controller" 
 ```
+
+After training the representation model or the controller, please move the files `$model_pendulum_model.pth.tar` and `down_$model_pendulum_model.pth.tar` (available in the `evaluation`folder) to the `trained_models` folder.
 
 
